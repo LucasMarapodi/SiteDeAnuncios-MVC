@@ -1,0 +1,49 @@
+﻿@model List<Projeto.Infra.Data.Entities.Produto>
+
+
+@{
+    ViewData["Title"] = "ConsultaProdutos";
+    Layout = "~/Views/Shared/LayoutBase.cshtml";
+}
+    <div class="container mt-4">
+        <h2>Produtos Anunciados :</h2>
+
+        <table class="table table-hover table-striped border border-dark">
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>Preco</th>
+                    <th>Descricao</th>
+                    <th> Categoria</th>
+                    <th>Vendedor</th>
+                    <th>Operação</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.Nome</td>
+                        <td>R$ @item.Preco</td>
+                        <td> @item.Descricao</td>
+                        <td>@item.Categoria</td>
+                        <td>
+                            Nome : @item.Vendedor.Nome<br />
+                            Tel : @item.Vendedor.Telefone<br />
+                            Email :@item.Vendedor.Email<br />
+                        </td>
+
+
+                        <td>
+                            <a href="/Home/Compra?id=@item.IdProduto"
+                               class="btn btn-primary btn-sm">
+                                Comprar
+                            </a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+

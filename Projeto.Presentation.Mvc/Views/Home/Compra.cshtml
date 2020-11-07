@@ -1,0 +1,75 @@
+﻿@model Projeto.Presentation.Mvc.Models.ProdutoModels.ProdutoCompraModel
+
+
+
+@{
+    ViewData["Title"] = "Compra";
+    Layout = "~/Views/Shared/LayoutBase.cshtml";
+}
+
+@using (Html.BeginForm())
+{
+<div class="container mt-3">
+
+
+        <h2>Preencha os campos para realizar a compra   </h2>
+
+        @if (TempData["MensagemSucesso"] != null)
+        {
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <strong>@TempData["MensagemSucesso"]</strong>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        }
+
+        @if (TempData["MensagemErro"] != null)
+        {
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <strong>@TempData["MensagemErro"]</strong>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        }
+
+
+
+        <label>Seu Nome:</label>
+        @Html.TextBoxFor(model => model.Nome, new
+    {
+        @class = "form-control col-md-4",
+        @placeholder = "Digite Aqui"
+    })
+        <span class="text-danger">
+            @Html.ValidationMessageFor(model => model.Nome)
+        </span>
+        <br />
+
+        <label>Seu Endereço :</label>
+        @Html.TextBoxFor(model => model.Local, new
+    {
+        @class = "form-control col-md-4",
+        @placeholder = "Digite Aqui"
+    })
+        <span class="text-danger">
+            @Html.ValidationMessageFor(model => model.Local)
+        </span>
+        <br />
+        <label>Cartão para o Pagamento:</label>
+        @Html.TextBoxFor(model => model.Cartao, new
+    {
+        @class = "form-control col-md-4",
+        @placeholder = "ex : 12345678"
+    })
+        <span class="text-danger">
+            @Html.ValidationMessageFor(model => model.Cartao)
+        </span>
+        <br />
+        <br />
+        <input type="submit" value="Realizar a Compra"
+               class="btn btn-success btn-sm" />
+    </div>
+}
+

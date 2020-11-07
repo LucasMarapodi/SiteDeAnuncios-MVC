@@ -1,0 +1,94 @@
+﻿@model Projeto.Presentation.Mvc.Models.VendedorModels.VendedorCadastroModel
+
+@{
+    ViewData["Title"] = "CadastroVendedor";
+    Layout = "~/Views/Shared/LayoutBase.cshtml";
+}
+
+
+
+@using (Html.BeginForm())
+{
+    <div class="container mt-3">
+
+        <h2>Preencha os Campos Para Cadastrar o Vendedor</h2>
+
+        @if (TempData["MensagemSucesso"] != null)
+        {
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <strong>@TempData["MensagemSucesso"]</strong>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        }
+
+        @if (TempData["MensagemErro"] != null)
+        {
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <strong>@TempData["MensagemErro"]</strong>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        }
+
+
+
+        <label>Nome do Vendedor:</label>
+        @Html.TextBoxFor(model => model.Nome, new
+    {
+        @class = "form-control col-md-4",
+        @placeholder = "Digite Aqui"
+    })
+        <span class="text-danger">
+            @Html.ValidationMessageFor(model => model.Nome)
+        </span>
+        <br />
+        <label>Senha:</label>
+        @Html.PasswordFor(model => model.Senha, new
+    {
+        @class = "form-control col-md-4",
+        @placeholder = "Digite Aqui"
+    })
+        <span class="text-danger">
+            @Html.ValidationMessageFor(model => model.Senha)
+        </span>
+        <br />
+        <label>Confirme a Senha:</label>
+        @Html.PasswordFor(model => model.SenhaTeste, new
+    {
+        @class = "form-control col-md-4",
+        @placeholder = "Digite Aqui"
+    })
+        <span class="text-danger">
+            @Html.ValidationMessageFor(model => model.SenhaTeste)
+        </span>
+        <br />
+
+        <label>Email:</label>
+        @Html.TextBoxFor(model => model.Email, new
+    {
+        @class = "form-control col-md-4",
+        @placeholder = "Digite Aqui"
+    })
+        <span class="text-danger">
+            @Html.ValidationMessageFor(model => model.Email)
+        </span>
+        <br />
+        <label>Telefone:</label>
+        @Html.TextBoxFor(model => model.Telefone, new
+    {
+        @class = "form-control col-md-4",
+        @placeholder = "Digite Aqui"
+    })
+        <span class="text-danger">
+            @Html.ValidationMessageFor(model => model.Telefone)
+        </span>
+        <br />
+        <br />
+        <input type="submit" value="Realizar o Cadastro"
+               class="btn btn-success btn-sm" />
+    </div>
+}
+

@@ -1,0 +1,66 @@
+﻿@model List<Projeto.Infra.Data.Entities.Produto>
+
+@{
+    ViewData["Title"] = "ConsultaVendedorProdutos";
+    Layout = "~/Views/Shared/LayoutVendedor.cshtml";
+}
+
+
+
+
+
+    <div class="container mt-3">
+        <h2>Consulta dos seus Produtos :</h2>
+
+
+        @if (TempData["MensagemSucesso"] != null)
+        {
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <strong>@TempData["MensagemSucesso"]</strong>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        }
+
+        @if (TempData["MensagemErro"] != null)
+        {
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <strong>@TempData["MensagemErro"]</strong>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        }
+        <table class="table table-hover table-striped border border-dark">
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>Preco</th>
+                    <th>Descricao</th>
+                    <th>Categoria</th>
+                    <th>Operação</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.Nome</td>
+                        <td>R$ @item.Preco</td>
+                        <td> @item.Descricao</td>
+                        <td>@item.Categoria</td>
+                        <td>
+                            <a href="/Vendedor/EdicaoProduto?id=@item.IdProduto" class="btn btn-primary btn-sm">
+                                Atualizar
+                            </a>
+                            <a href="/Vendedor/Exclusao?id=@item.IdProduto" onclick="return confirm('Deseja Realmente Excluir do Registro ?');" class="btn btn-danger btn-sm">
+                                Excluir
+                            </a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+    </div>
