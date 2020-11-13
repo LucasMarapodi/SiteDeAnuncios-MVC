@@ -1,0 +1,8 @@
+CREATE TABLE [dbo].[Vendedor] (
+    [IdVendedor] INT            IDENTITY (1, 1) NOT NULL,
+    [Nome]       NVARCHAR (150) NOT NULL,
+    [Email]      NVARCHAR (150) NOT NULL,
+    [Senha]      NVARCHAR (150) NOT NULL,
+    [Telefone]   NVARCHAR (50)  NOT NULL,
+    PRIMARY KEY CLUSTERED ([IdVendedor] ASC)
+);

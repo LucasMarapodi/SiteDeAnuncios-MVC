@@ -1,0 +1,10 @@
+CREATE TABLE [dbo].[Produto] (
+    [IdProduto]  INT            IDENTITY (1, 1) NOT NULL,
+    [Nome]       NVARCHAR (150) NOT NULL,
+    [Descricao]  NVARCHAR (500) NOT NULL,
+    [Categoria]  NVARCHAR (50)  NOT NULL,
+    [Preco]      DECIMAL (9, 2) NOT NULL,
+    [IdVendedor] INT            NOT NULL,
+    PRIMARY KEY CLUSTERED ([IdProduto] ASC),
+    FOREIGN KEY ([IdVendedor]) REFERENCES [dbo].[Vendedor] ([IdVendedor])
+);
