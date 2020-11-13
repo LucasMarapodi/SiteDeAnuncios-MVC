@@ -123,6 +123,8 @@ namespace Projeto.Presentation.Mvc.Controllers
 
         #region Compra
 
+        // Actions que simulam a compra, apesar de não serem computados no banco de dados
+
         public IActionResult Compra(int id,[FromServices]ProdutoRepository produtoRepository)
         {
             return View();
